@@ -1,17 +1,24 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <!--add title props so that components are reusable-->
+  <StepHeader
+    title="3. Set your triggers and targeting to reach the right people at the right time"
+  />
+  <SectionTheme title="Popup triggers" />
+  <TriggersBox/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import SectionTheme from "./components/SectionTheme";
+import StepHeader from "./components/StepHeader.vue";
+import TriggersBox from "./components/TriggersBox.vue"
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    SectionTheme,
+    StepHeader,
+    TriggersBox
+  },
+};
 </script>
 
 <style>
@@ -22,5 +29,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 </style>
