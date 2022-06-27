@@ -45,10 +45,10 @@ export default {
       };
       setTimeout(addTime, 1000 * 60 * parseFloat(this.timePop));
     },
-    setScroller() {
-      console.log(this.windowTop);
-      console.log(window.scrollTop);
-      this.isScrollPopOpen = window.scrollY === this.scrollPop
+    setScroller: function (e) {
+      console.log(e.currentTarget.scrollY);
+      console.log(e.currentTarget.scrollY === this.scrollPop);
+      this.isScrollPopOpen = e.currentTarget.scrollY === this.scrollPop;
       this.scrollPopContent = `you have reached the ${
         parseFloat(this.scrollPop) / 1000
       }% of the page`;
