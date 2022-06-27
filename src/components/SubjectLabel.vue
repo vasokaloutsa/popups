@@ -1,7 +1,7 @@
 <script>
 export default {
-  name:"SectionTheme",
-   props: {
+  name: "SubjectLabel",
+  props: {
     title: String,
   },
 };
@@ -9,9 +9,9 @@ export default {
 
 <template>
   <div class="wrapper">
-  <h3 class="title">
-    {{ title }}
-  </h3>
+    <h3 class="title">
+      {{ title }}
+    </h3>
   </div>
 </template>
 
@@ -21,7 +21,7 @@ export default {
   background-color: purple;
   width: 80%;
   height: 50px;
-  display: flex; /* add flexbox so that can automatically place items correclty for arabic layout*/ 
+  display: flex; /* add flexbox so that can automatically place items correclty for arabic layout*/
   align-items: center;
 }
 

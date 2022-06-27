@@ -1,22 +1,37 @@
 <template>
   <!--add title props so that components are reusable-->
-  <StepHeader
-    title="3. Set your triggers and targeting to reach the right people at the right time"
-  />
-  <SectionTheme title="Popup triggers" />
-  <TriggersBox/>
+  <component :is="currentView" />
 </template>
 
 <script>
-import SectionTheme from "./components/SectionTheme";
-import StepHeader from "./components/StepHeader.vue";
-import TriggersBox from "./components/TriggersBox.vue"
+import NotificationsOptions from "./components/NotificationsOptions.vue";
+import AboutPage from "./components/AboutPage.vue";
+
+const routes = {
+  "/": NotificationsOptions,
+  "/about": AboutPage,
+};
+
 export default {
   name: "App",
+  data() {
+    return {
+      currentPath: window.location.hash,
+    };
+  },
+  computed: {
+    currentView() {
+      return routes[this.currentPath.slice(1) || "/"];
+    },
+  },
+  mounted() {
+    window.addEventListener("hashchange", () => {
+      this.currentPath = window.location.hash;
+    });
+  },
   components: {
-    SectionTheme,
-    StepHeader,
-    TriggersBox
+    NotificationsOptions,
+    AboutPage,
   },
 };
 </script>

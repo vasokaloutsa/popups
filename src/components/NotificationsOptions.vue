@@ -1,34 +1,40 @@
 <script>
+import StepHeader from "./StepHeader.vue";
+import SubjectLabel from "./SubjectLabel.vue";
+import NavigationBtn from "./NavigationBtn.vue";
+
+
 export default {
-  name: "TriggersBox",
+  name: "NotificationsOptions",
   data() {
     return {
-      isOpenPopUp: false,
+      timePop: false,
+      isOpenScrollPop: false,
+      isOpenExitPop: false,
       additionalTime: 0,
     };
   },
   methods: {
     setTimer(event) {
       console.log(event.target.value);
-      const addTime = () => {
-        this.isOpenPopUp = true;
-        console.log(this.isOpenPopUp);
-        clearTimeout();
-      };
-      // setTimeout(greet, 1000 * 60 * parseFloat(event.target.value));
-      setTimeout(addTime, 1000 * 60 * parseFloat(event.target.value));
+    //   this.$router.push({ path: '/about', query: { time: `${event.target.value}` }})
     },
   },
+  components: { StepHeader, SubjectLabel, NavigationBtn },
+  
 };
 </script>
 
 <template>
-  <p v-if="isOpenPopUp">BRRRRRRRRRRR</p>
+  <StepHeader
+    title="3. Set your triggers and targeting to reach the right people at the right time"
+  />
+  <SubjectLabel title="Popup triggers" />
   <div class="flex">
     <!-- <input
       type="checkbox"
-      true-value="isOpenPopUp"
-      false-value="isOpenPopUp"
+      true-value="isOpenTimePop"
+      false-value="isOpenTimePop"
     /> -->
     <label for="timeSelection"> Show on a timer</label>
     <select
@@ -37,7 +43,7 @@ export default {
       class="form-control"
       @change="setTimer($event)"
     >
-      <option value="1">1 minute</option>
+      <option value="1" default>1 minute</option>
       <option value="0.5">0.5 minute</option>
       <option value="60">1 hour</option>
     </select>
@@ -55,6 +61,11 @@ export default {
       <option value="1">100%</option>
     </select>
   </div>
+  <!-- <router-link :to="{path:'#/about',query:{id: 1}}">
+     <NavigationBtn isForward href="#/about" title="Next" />
+</router-link> -->
+
+  <NavigationBtn isForward href="#/about" queries="time=3" title="Next" />
 </template>
 
 <style>
