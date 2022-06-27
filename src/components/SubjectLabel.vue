@@ -19,7 +19,6 @@ export default {
 .wrapper {
   color: white;
   background-color: purple;
-  width: 80%;
   height: 50px;
   display: flex; /* add flexbox so that can automatically place items correclty for arabic layout*/
   align-items: center;

@@ -8,7 +8,7 @@ export default {
     isForward: Boolean,
     title: String,
     href: String,
-    queries: String
+    queries: String,
   },
   computed: {
     classes() {
@@ -20,35 +20,43 @@ export default {
     },
   },
   components: { BackArrow, ForwardBtn },
-  methods: {
-    onClick() {
-        this.$router.push({ name: "about", time: 'asd' })
-    }
-  }
+  methods: {},
 };
 </script>
 
 <template>
-  <a @click="onClick" :class="classes">
+  <button :class="classes">
     <BackArrow v-if="isBackwards" />
     <span class="content">{{ title }}</span>
     <ForwardBtn v-if="isForward" />
-  </a>
+  </button>
 </template>
 
 <style>
 .forwardBtn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 64px;
   min-height: 40px;
   border: none;
+  cursor: pointer;
   background-color: rgb(127, 255, 144);
+  margin: 16px;
+  align-self: end;
 }
 
 .backBtn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
   width: 64px;
   min-height: 40px;
   border: none;
   background-color: rgb(112, 117, 113);
+  margin: 16px;
+  align-self: start;
 }
 
 .content {

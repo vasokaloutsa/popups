@@ -1,38 +1,12 @@
 <template>
-  <!--add title props so that components are reusable-->
-  <component :is="currentView" />
+  <div class="mainContent">
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
-import NotificationsOptions from "./components/NotificationsOptions.vue";
-import AboutPage from "./components/AboutPage.vue";
-
-const routes = {
-  "/": NotificationsOptions,
-  "/about": AboutPage,
-};
-
 export default {
   name: "App",
-  data() {
-    return {
-      currentPath: window.location.hash,
-    };
-  },
-  computed: {
-    currentView() {
-      return routes[this.currentPath.slice(1) || "/"];
-    },
-  },
-  mounted() {
-    window.addEventListener("hashchange", () => {
-      this.currentPath = window.location.hash;
-    });
-  },
-  components: {
-    NotificationsOptions,
-    AboutPage,
-  },
 };
 </script>
 
@@ -41,12 +15,19 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  min-height: 100vh;
+}
+
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid purple;
+  margin: 16px;
 }
 </style>
