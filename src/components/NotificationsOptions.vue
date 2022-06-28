@@ -62,7 +62,7 @@ export default {
         <option>--</option>
         <option value="250">25%</option>
         <option value="500">50%</option>
-        <option value="1000">100%</option>
+        <option value="800">80%</option>
       </select>
     </div>
   </section>

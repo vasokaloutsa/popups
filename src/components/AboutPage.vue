@@ -17,7 +17,7 @@ export default {
   },
   beforeMount() {
     this.timePop = parseFloat(this.$route.query.time) || "none";
-    this.scrollPop = parseFloat(this.$route.query.time) || "none";
+    this.scrollPop = parseFloat(this.$route.query.scroll) || "none";
     this.timePop !== "none" && this.setTimer();
   },
   created() {
@@ -46,9 +46,10 @@ export default {
       setTimeout(addTime, 1000 * 60 * parseFloat(this.timePop));
     },
     setScroller: function (e) {
-      console.log(e.currentTarget.scrollY);
-      console.log(e.currentTarget.scrollY === this.scrollPop);
       this.isScrollPopOpen = e.currentTarget.scrollY === this.scrollPop;
+      if (this.isScrollPopOpen) {
+        setTimeout((this.isScrollPopOpen = false), 2000);
+      }
       this.scrollPopContent = `you have reached the ${
         parseFloat(this.scrollPop) / 1000
       }% of the page`;
